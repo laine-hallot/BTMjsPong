@@ -177,7 +177,7 @@ let update = function(){
 };
 
 let render = function() {
-		context.fillStyle = '#FF00FF';
+		context.fillStyle = '#FFFFFF';
 		context.fillRect(0, 0, width, height);
 		player.render();
 		computer.render();
