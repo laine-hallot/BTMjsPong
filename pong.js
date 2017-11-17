@@ -17,10 +17,10 @@ class Ball{
   update(paddle1, paddle2) {
       this.x += this.x_speed;
       this.y += this.y_speed;
-      let top_x = this.x - 5;
-      let top_y = this.y -5;
-      let bottom_x = this.x + 5;
-      let bottom_y = this.y + 5;
+      var top_x = this.x - 5;
+      var top_y = this.y -5;
+      var bottom_x = this.x + 5;
+      var bottom_y = this.y + 5;
 
 
       if(this.x - 5 < 0) { //left wall
@@ -91,8 +91,8 @@ class Computer {
     }
 
     update(ball){
-			let x_pos = ball.x;
-			let diff = -((this.paddle.x + (this.paddle.width / 2)) - x_pos);
+			var x_pos = ball.x;
+			var diff = -((this.paddle.x + (this.paddle.width / 2)) - x_pos);
 			if(diff < 0 && diff > 4) { //max speed left
 					diff = -5;
 			}
@@ -121,8 +121,8 @@ class Player{
       }
 
     update(){
-      for(let key in keysDown) {
-          let value = Number(key);
+      for(var key in keysDown) {
+          var value = Number(key);
           if(value == 37){ //left arrow
               this.paddle.move(-4,0);
           }else if(value == 39){ //right arrow
@@ -136,19 +136,19 @@ class Player{
 }
 
 
-let animate = window.requestAnimationFrame ||
+var animate = window.requestAnimationFrame ||
 		window.webkitRequestAnimationFrame ||
 		window.mozRequestAnimationFrame ||
 		function(callback) { window.setTimeout(callback, 1000/60) };
 
-let canvas = document.createElement('canvas');
-let width = 400;
-let height = 600;
+var canvas = document.createElement('canvas');
+var width = 400;
+var height = 600;
 canvas.width = width;
 canvas.height =height;
-let context = canvas.getContext('2d');
+var context = canvas.getContext('2d');
 
-let keysDown = {};
+var keysDown = {};
 
 window.addEventListener("keydown", function (event) {
 		keysDown[event.keyCode] = true;
@@ -163,20 +163,20 @@ window.onload = function(){
 		animate(step);
 };
 
-let step = function() {
+var step = function() {
 		update();
 		render();
 		animate(step);
 };
 
 
-let update = function(){
+var update = function(){
 		player.update();
 		computer.update(ball);
 		ball.update(player.paddle, computer.paddle);
 };
 
-let render = function() {
+var render = function() {
 		context.fillStyle = '#FF00FF';
 		context.fillRect(0, 0, width, height);
 		player.render();
@@ -185,6 +185,6 @@ let render = function() {
 };
 
 
-let computer = new Computer();
-let player = new Player();
-let ball = new Ball(200,300);
+var computer = new Computer();
+var player = new Player();
+var ball = new Ball(200,300);
